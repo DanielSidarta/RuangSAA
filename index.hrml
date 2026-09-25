@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Ruang SAA - St. Albertus Agung Makassar</title>
+  
+  <!-- PWA Metadata -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#800000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Ruang SAA">
+  <link rel="apple-touch-icon" href="icon-192.png">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #800000;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Masukkan URL Deployment Google Apps Script Anda di src -->
+  <iframe 
+    src="https://script.google.com/macros/s/AKfycbyUeIoiuYNjey583txKeQpHC8TKzKPMU8JSm30V6e0HmYiok6QJY-7nV8n9054qd-B2kg/exec" 
+    allow="geolocation; microphone; camera">
+  </iframe>
+
+  <script>
+    // Register Service Worker untuk PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => console.log('SW Registered!', reg))
+          .catch(err => console.error('SW Registration Failed!', err));
+      });
+    }
+  </script>
+</body>
+</html>
